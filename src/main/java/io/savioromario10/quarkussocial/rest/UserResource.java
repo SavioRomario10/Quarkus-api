@@ -25,6 +25,8 @@ import io.savioromario10.quarkussocial.rest.dto.CreateUserRequest;
 import io.savioromario10.quarkussocial.rest.dto.ResponseError;
 
 @Path("/users")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
 
   private UserRepository repository;
@@ -38,8 +40,6 @@ public class UserResource {
 
   @POST
   @Transactional
-  @Consumes(MediaType.APPLICATION_JSON)
-  @Produces(MediaType.APPLICATION_JSON)
   public Response createUser(CreateUserRequest userRequest) {
 
     Set<ConstraintViolation<CreateUserRequest>> violations = validator.validate(userRequest);
